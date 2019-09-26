@@ -4,26 +4,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import metodosGenerales.Try;
+
 public class Main {
 
 	public static void main(String[] args) throws IOException {
+		Try tryclass = new Try();
 		boolean salir = false;
 		while (!salir) {
 			System.out.println(
 					"Bienvenido al programa, ¿Qué acción desea realizar? \n1.Insertar empleado.\n2.Consultar empleados.\n3.Modificar Empleado.\n4.Eliminar Empleado.\n5.Salir");
 			ManejadorDatos handler = new ManejadorDatos();
 			BufferedReader r = new BufferedReader(new InputStreamReader(System.in));
-			int n = Integer.parseInt(r.readLine());
+			int n =tryclass.tryInt();
 			switch (n) {
 			case 1:
 				System.out.println("Inserte el id del empleado.");
-				int id = Integer.parseInt(r.readLine());
+				int id = tryclass.tryInt();
 				System.out.println("Inserte el apellido del empleado.");
 				String apellido = r.readLine();
 				System.out.println("Inserte el departamento del empleado.");
-				int dep = Integer.parseInt(r.readLine());
+				int dep = tryclass.tryInt();
 				System.out.println("Inserte el salario del empleado.");
-				float salario = Integer.parseInt(r.readLine());
+				float salario = tryclass.tryFloat();
 				handler.EscribirFichero(id, apellido, dep, salario);
 				System.out.println("Completado.");
 				break;
